@@ -7,7 +7,10 @@ export default {
   ],
   theme: {
     extend: {
-      colors: {
+      backgroundImage: {
+        'custom-bg': "url('/images/background.jpg')", 
+      },
+      colors: { 
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
@@ -15,3 +18,12 @@ export default {
   },
   plugins: [],
 };
+
+ 
+
+
+
+
+
+
+
