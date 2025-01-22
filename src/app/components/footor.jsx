@@ -12,7 +12,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="w-full max-w-screen-sm p-6 bg-[#003359] text-white rounded-lg shadow-lg mx-auto flex justify-between items-center relative">
+    <footer className="w-full max-w-screen-sm py-6 pr-6 bg-[#003359] text-white  shadow-lg mx-auto flex justify-between items-center relative">
       {/* Left Section: Logo and Social Icons */}
       <div className="flex flex-col items-center w-1/2">
         {/* Logo */}
