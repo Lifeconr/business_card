@@ -1,15 +1,15 @@
 'use client';
 
 import Image from 'next/image';
-import ppic from '../../../public/images/ppic.jpg';
+import ppic from '../../../public/images/pp3.jpg';
 import {
-  FaPhone,
+  FaPhoneAlt,
   FaFacebook,
   FaTelegram,
-  FaMapMarkerAlt,
   FaEnvelope,
   FaLinkedin,
   FaWhatsapp,
+  FaTiktok,
 } from 'react-icons/fa';
 
 export default function RealtorSection() {
@@ -17,13 +17,14 @@ export default function RealtorSection() {
     name: 'Kidst Mengistu',
     position: 'Realtor',
     phone: '+251 91 220 9322',
-    email: 'example@gmail.com',
-    linkedin: 'https://www.linkedin.com/company/dmc-realestate/',
+    email: 'Kidstmengstu19@gmail.com',
+    linkedin: 'https://www.linkedin.com/in/kidst-mengistu-300748284?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
     website: 'https://dmcreal-estate.com/',
-    facebook: 'https://web.facebook.com/p/DMC-Real-Estate-100088437130483/?_rdc=1&_rdr',
+    facebook: 'https://www.facebook.com/profile.php?id=61567610923060',
     telegram: 'https://t.me/Kidiine',
-    whatsapp: 'https:example.com',
-    location: 'Addis Ababa, Ethiopia',
+    whatsapp: 'https://wa.me/c/251912209322',
+    tiktok: 'https://tiktok.com/@kidst19market',
+ 
     picture: ppic,
   };
 
@@ -35,7 +36,13 @@ export default function RealtorSection() {
   };
 
   return (
-    <div className="w-full max-w-screen-sm p-12 rounded-lg shadow-lg mx-auto text-white">
+    <div className="w-full max-w-screen-sm p-12 rounded-lg shadow-lg mx-auto text-white bg-white">
+      {/* Slogan */}
+      <p className="text-center text-[#003359] text-3xl font-thin mt-4 mb-12 italic ">
+        Joy Starts Here <br />
+        <span className="text-[#00BDFF]">ደስታዎ እዚህ ይጀምራል!</span>
+      </p>
+            
       <Image
         src={realtor.picture}
         alt={realtor.name}
@@ -54,7 +61,7 @@ export default function RealtorSection() {
             className="flex items-center bg-gray-200 text-[#003359]  px-4 py-2 rounded-md cursor-pointer hover:bg-gray-300"
             onClick={() => copyToClipboard(realtor.phone)}
           >
-            <FaPhone className="text-2xl mr-4" />
+            <FaPhoneAlt className="text-2xl mr-4" />
             <div>
               <p className="font-semibold">{realtor.phone}</p>
               <span className="text-sm">Phone Number</span>
@@ -102,22 +109,20 @@ export default function RealtorSection() {
           <FaTelegram className="text-2xl" />
         </a>
         <a
+          href={realtor.tiktok}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="p-2 bg-black text-white rounded-full hover:bg-black"
+        >
+          <FaTiktok className="text-2xl" />
+        </a>        
+        <a
           href={realtor.whatsapp}
           target="_blank"
           rel="noopener noreferrer"
           className="p-2 bg-green-500 text-white rounded-full hover:bg-green-600"
         >
           <FaWhatsapp className="text-2xl" />
-        </a>
-        <a
-          href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-            realtor.location
-          )}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="p-2 bg-red-600 text-white rounded-full hover:bg-red-700"
-        >
-          <FaMapMarkerAlt className="text-2xl" />
         </a>
       </div>
 
@@ -136,11 +141,7 @@ export default function RealtorSection() {
         </a>
       </div>
 
-      {/* Slogan */}
-      <p className="text-center text-[#003359] text-3xl font-thin mt-4 italic ">
-        Joy Starts Here <br />
-        <span className="text-[#00BDFF]">ደስታዎ እዚህ ይጀምራል!</span>
-      </p>
+
     </div>
   );
 }

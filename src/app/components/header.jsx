@@ -14,9 +14,6 @@ export default function Header() {
               alt="Company Logo"
               className="w-30 h-30 mx-auto"
             />
-            <p className="text-center font-semibold text-[#003359]  mt-2">
-              DMC Real Estate
-            </p>
           </div>
         </div>
 

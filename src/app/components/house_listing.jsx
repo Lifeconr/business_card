@@ -10,51 +10,73 @@ import bd3 from "../../../public/images/bd3.jpg";
 import bd2 from "../../../public/images/bd2.jpg";
 
 export default function HouseListings() {
-  const [comingSoonClicked, setComingSoonClicked] = useState({});
+  const [selectedListing, setSelectedListing] = useState(null);
 
   const listings = [
-    { name: "Studio", image: h1, link: "https://dmcreal-estate.com/am/studio-2/" },
-    { name: "One Bedroom", image: bd1, link: "https://dmcreal-estate.com/am/one-bedroom/" },
-    { name: "Two Bedroom", image: bd3, link: "https://dmcreal-estate.com/am/two-bedroom-c1/" },
-    { name: "Three Bedroom", image: bd2, link: "https://dmcreal-estate.com/am/three-bedroom/" },
-    { name: "Four Bedroom", image: h3, comingSoon: true },
-    { name: "Shop", image: h4, comingSoon: true },
+    { name: "Studio", image: h1, link: "https://dmcreal-estate.com/am/studio-2/", description: "Kare Meter = 55.5 sqm" },
+    { name: "One Bedroom", image: bd1, link: "https://dmcreal-estate.com/am/one-bedroom/", description: "Kare Meter = 76.2 sqm" },
+    { name: "Two Bedroom", image: bd3, link: "https://dmcreal-estate.com/am/two-bedroom-c1/", description: "Kare Meter = 144.6 sqm" },
+    { name: "Three Bedroom", image: bd2, link: "https://dmcreal-estate.com/am/three-bedroom/", description: "Kare Meter = 200 sqm" },
+    { name: "Four Bedroom", image: h3, comingSoon: true, description: "Details Coming Soon!" },
+    { name: "Shop", image: h4, comingSoon: true, description: "Details Coming Soon!" },
   ];
 
-  const handleComingSoonClick = (index) => {
-    setComingSoonClicked((prevState) => ({
-      ...prevState,
-      [index]: true,
-    }));
-  };
-
   return (
-    <div className="w-full max-w-screen-sm mx-auto rounded-lg shadow-lg p-4 grid grid-cols-1 sm:grid-cols-2 gap-4 bg-white">
-      {listings.map((listing, index) => (
-        <div
-          key={index}
-          className="relative cursor-pointer transform transition-transform duration-300 hover:scale-105"
-          onClick={() =>
-            listing.comingSoon
-              ? handleComingSoonClick(index)
-              : window.open(listing.link, "_blank")
-          }
-        >
-          <Image
-            src={listing.image}
-            alt={listing.name}
-            className="w-full h-48 object-cover rounded-md transition-transform duration-300 hover:brightness-90"
-          />
-          {listing.comingSoon && comingSoonClicked[index] && (
-            <div className="absolute inset-0 bg-black bg-opacity-50 flex justify-center items-center rounded-md">
-              <p className="text-white font-bold">Coming Soon</p>
+    <div>
+      {/* Banner */}
+      <div className="bg-gradient-to-r from-[#003359] to-[#00bdff] text-white text-center py-4 w-full max-w-screen-sm mx-auto">
+        <h1 className="text-2xl font-bold">HillSide Apartments</h1>
+      </div>
+
+      <p className="text-center text-[#003359] text-2xl font-thin mt-4 italic bg-white">
+        በ 400,000ሺ ብር ብቻ ፈጥነው የቤት ባለቤት ይሁኑ! <br />
+      </p>
+
+      {/* Listings */}
+      <div className="w-full max-w-screen-sm mx-auto rounded-lg shadow-lg p-4 grid grid-cols-1 sm:grid-cols-2 gap-4 bg-white">
+        {listings.map((listing, index) => (
+          <div
+            key={index}
+            className={`relative cursor-pointer group transform transition-transform duration-300 hover:scale-105 rounded-md overflow-hidden ${
+              selectedListing === index ? "border-4 border-[#00bdff]" : ""
+            }`}
+            onClick={() =>
+              setSelectedListing(selectedListing === index ? null : index)
+            }
+          >
+            {/* Background Image */}
+            <Image
+              src={listing.image}
+              alt={listing.name}
+              className={`w-full h-48 object-cover transition-transform duration-300 ${
+                selectedListing === index ? "blur-sm" : ""
+              }`}
+            />
+
+            {/* Overlay Text */}
+            {selectedListing === index && (
+              <div className="absolute inset-0 bg-black bg-opacity-60 flex flex-col justify-center items-center text-center p-4">
+                <p className="text-white font-bold text-lg">{listing.description}</p>
+                {!listing.comingSoon && (
+                  <a
+                    href={listing.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white underline mt-2"
+                  >
+                    Read More...
+                  </a>
+                )}
+              </div>
+            )}
+
+            {/* Listing Name */}
+            <div className="absolute bottom-2 left-2 bg-gray-900 bg-opacity-75 px-2 py-1 rounded-md">
+              <p className="text-white font-bold">{listing.name}</p>
             </div>
-          )}
-          <div className="absolute bottom-2 left-2 bg-gray-900 bg-opacity-75 px-2 py-1 rounded-md">
-            <p className="text-white font-bold">{listing.name}</p>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 }
