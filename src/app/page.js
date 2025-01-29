@@ -3,6 +3,7 @@ import Header from "./components/header";
 import RealtorSection from "./components/realtor";
 import HouseListings from "./components/house_listing";
 import RegisterSection from "./components/register";
+import AppointmentPage from "./components/appointment";
 import Footer from "./components/footor";
 
 export default function Home() {
@@ -12,6 +13,7 @@ export default function Home() {
       <RealtorSection />
       <HouseListings />
       <RegisterSection />
+      <AppointmentPage/>
       <Footer />
     </div>
   );

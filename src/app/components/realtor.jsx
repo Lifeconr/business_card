@@ -36,21 +36,21 @@ export default function RealtorSection() {
   };
 
   return (
-    <div className="w-full max-w-screen-sm p-12 rounded-lg shadow-lg mx-auto text-white bg-white">
-      {/* Slogan */}
+    <div className="w-full max-w-screen-sm p-8 rounded-lg shadow-lg mx-auto text-white bg-white">
+      {/* Slogan
       <p className="text-center text-[#003359] text-3xl font-thin mt-4 mb-12 italic ">
         Joy Starts Here <br />
         <span className="text-[#00BDFF]">ደስታዎ እዚህ ይጀምራል!</span>
       </p>
-            
+             */}
       <Image
         src={realtor.picture}
         alt={realtor.name}
-        className="w-32 h-32 rounded-full mx-auto mb-4"
+        className="w-36 h-36 rounded-full mx-auto mb-4"
         width={128}
         height={128}
       />
-      <h2 className="text-2xl font-bold text-center text-[#003359] mb-4">{realtor.name}</h2>
+      <h2 className="text-2xl font-bold text-center text-[#003359] mb-">{realtor.name}</h2>
       <p className="text-center text-xl font-bold text-[#003359]">{realtor.position}</p>
 
       {/* Contact Info */}
@@ -62,9 +62,9 @@ export default function RealtorSection() {
             onClick={() => copyToClipboard(realtor.phone)}
           >
             <FaPhoneAlt className="text-2xl mr-4" />
-            <div>
+            <div >
+              <span className="text-sm text-[#00BDFF]">Phone Number</span>
               <p className="font-semibold">{realtor.phone}</p>
-              <span className="text-sm">Phone Number</span>
             </div>
           </div>
 
@@ -75,8 +75,9 @@ export default function RealtorSection() {
           >
             <FaEnvelope className="text-2xl mr-4" />
             <div>
+
+              <span className="text-sm text-[#00BDFF]">Email</span>
               <p className="font-semibold">{realtor.email}</p>
-              <span className="text-sm">Email</span>
             </div>
           </div>
         </div>
@@ -127,21 +128,21 @@ export default function RealtorSection() {
       </div>
 
       {/* Website Button */}
-      <div className="text-center mt-8 mb-12">
+      <div className="text-center mt-4 ">
         <a
           href={realtor.website}
           target="_blank"
           rel="noopener noreferrer"
-          className="w-full py-2 px-4 text-white rounded-md"
+          className="inline-block sm:w-auto py-2 px-4 text-white rounded-md transition-transform duration-300 transform hover:scale-105 overflow-hidden"
           style={{
             backgroundImage: 'linear-gradient(90deg, #003359 0%, #00BDFF 100%)',
           }}
+          onMouseDown={(e) => e.target.classList.add('scale-95')}
+          onMouseUp={(e) => e.target.classList.remove('scale-95')}
         >
           Visit Our Site
         </a>
       </div>
-
-
     </div>
   );
 }

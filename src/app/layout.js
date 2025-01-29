@@ -1,13 +1,15 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Open_Sans, Roboto } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const openSans = Open_Sans({
+  weight: ["500", "600", "700"], // Add the desired weights
+  variable: "--font-open-sans",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const roboto = Roboto({
+  weight: ["500", "500", "700"], // Add the desired weights
+  variable: "--font-roboto",
   subsets: ["latin"],
 });
 
@@ -20,7 +22,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`bg-custom-bg ${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`bg-custom-bg ${openSans.variable} ${roboto.variable} antialiased`}
       >
         {children}
       </body>

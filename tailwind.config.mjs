@@ -10,13 +10,20 @@ export default {
       backgroundImage: {
         'custom-bg': "url('/images/background.jpg')", 
       },
+      fontFamily: {
+        'cursive': ['Brush Script MT', 'cursive'],
+      },
       colors: { 
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/forms')({
+      strategy: 'class',
+    }),
+  ],
 };
 
  

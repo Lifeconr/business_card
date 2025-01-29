@@ -1,109 +1,226 @@
 'use client';
 
+import PhoneNumberInput from './PhoneNumberInput';
 import { useState } from 'react';
 
-export default function RegisterSection() {
-  const [formData, setFormData] = useState({
-    name: '',
-    phone: '',
-    occupation: '',
+export default function Register() {
+  const [activeTab, setActiveTab] = useState('personal');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [formValues, setFormValues] = useState({
+    fullName: '',
+    companyName: '',
+    email: '',
     houseType: '',
+    bedroomType: '',
   });
+  const [formErrors, setFormErrors] = useState({});
 
-  const [errors, setErrors] = useState({});
+  const validate = () => {
+    const errors = {};
+    if (!formValues.fullName.trim()) {
+      errors.fullName = 'Full name is required.';
+    } else if (formValues.fullName.length > 50) {
+      errors.fullName = 'Full name should not exceed 50 characters.';
+    }
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-    setErrors({ ...errors, [name]: '' }); // Clear error for the field
+    if (activeTab === 'company' && !formValues.companyName.trim()) {
+      errors.companyName = 'Company name is required.';
+    } else if (
+      activeTab === 'company' &&
+      formValues.companyName.length > 50
+    ) {
+      errors.companyName = 'Company name should not exceed 50 characters.';
+    }
+
+    if (!formValues.email.trim()) {
+      errors.email = 'Email is required.';
+    } else if (!/\S+@\S+\.\S+/.test(formValues.email)) {
+      errors.email = 'Please enter a valid email.';
+    }
+
+    if (!phoneNumber.trim()) {
+      errors.phoneNumber = 'Phone number is required.';
+    }
+    if (!formValues.houseType.trim()) {
+      errors.houseType = "House type is required.";
+    }
+    if (!formValues.bedroomType.trim()) {
+      errors.bedroomType = "Bedroom type is required.";
+    }
+    return errors;
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    let validationErrors = {};
-
-    if (!formData.name) validationErrors.name = 'Name is required.';
-    if (!formData.phone) validationErrors.phone = 'Phone number is required.';
-    if (!/^\d+$/.test(formData.phone)) validationErrors.phone = 'Only numbers are allowed.';
-    if (!formData.occupation) validationErrors.occupation = 'Occupation is required.';
-    if (!formData.houseType) validationErrors.houseType = 'Please select a house type.';
-
-    setErrors(validationErrors);
-
-    if (Object.keys(validationErrors).length === 0) {
-      // Submit the form
-      alert('Form submitted successfully!');
+    const errors = validate();
+    if (Object.keys(errors).length === 0) {
+      console.log('Form submitted successfully', {
+        ...formValues,
+        phoneNumber,
+      });
+    } else {
+      setFormErrors(errors);
     }
   };
 
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormValues((prev) => ({ ...prev, [name]: value }));
+    setFormErrors((prev) => ({ ...prev, [name]: null }));
+  };
+
+  const isHouseTypeSelected = Boolean(formValues.houseType && formValues.bedroomType);
+
   return (
-    <div className="w-full max-w-screen-sm p-12 bg-white rounded-lg shadow-lg mx-auto">
-      <h2 className="text-2xl font-bold text-center mb-4 text-[#003359]">Register</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="mb-4">
-          <label className="block text-gray-700">Name</label>
-          <input
-            type="text"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            className={`w-full p-2 border ${errors.name ? 'border-red-500' : 'border-gray-300'} rounded-md`}
-            placeholder="Enter your name"
-          />
-          {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
-        </div>
-        <div className="mb-4">
-          <label className="block text-gray-700">Phone Number</label>
-          <input
-            type="tel"
-            name="phone"
-            value={formData.phone}
-            onChange={handleChange}
-            className={`w-full p-2 border ${errors.phone ? 'border-red-500' : 'border-gray-300'} rounded-md`}
-            placeholder="Enter your phone number"
-          />
-          {errors.phone && <p className="text-red-500 text-sm mt-1">{errors.phone}</p>}
-        </div>
-        <div className="mb-4">
-          <label className="block text-gray-700">Occupation</label>
-          <input
-            type="text"
-            name="occupation"
-            value={formData.occupation}
-            onChange={handleChange}
-            className={`w-full p-2 border ${errors.occupation ? 'border-red-500' : 'border-gray-300'} rounded-md`}
-            placeholder="Enter your occupation"
-          />
-          {errors.occupation && <p className="text-red-500 text-sm mt-1">{errors.occupation}</p>}
-        </div>
-        <div className="mb-4">
-          <label className="block text-gray-700">House Type</label>
-          <select
-            name="houseType"
-            value={formData.houseType}
-            onChange={handleChange}
-            className={`w-full p-2 border ${errors.houseType ? 'border-red-500' : 'border-gray-300'} rounded-md`}
+    <section id="register" className="bg-primary-light">
+      <div className="container mx-auto px-6 md:max-w-2xl lg:max-w-4xl xl:max-w-5xl">
+        <h1 className="text-center text-2xl font-bold text-primary-dark my-2">Register</h1>
+
+        {/* Tabs */}
+        <div className="flex justify-center">
+          <button
+            onClick={() => setActiveTab('personal')}
+            className={`px-8 py-2 rounded-t-lg font-medium ${
+              activeTab === 'personal'
+                ? 'bg-[#003359] text-white'
+                : 'bg-gray-200 text-gray-500'
+            }`}
           >
-            <option value="">Select House Type</option>
-            <option>Studio</option>
-            <option>One Bedroom</option>
-            <option>Two Bedroom</option>
-            <option>Three Bedroom</option>
-            <option>Four Bedroom</option>
-            <option>Shop</option>
-          </select>
-          {errors.houseType && <p className="text-red-500 text-sm mt-1">{errors.houseType}</p>}
+            Personal
+          </button>
+          <button
+            onClick={() => setActiveTab('company')}
+            className={`px-8 py-2 rounded-t-lg font-medium ${
+              activeTab === 'company'
+                ? 'bg-[#003359] text-white'
+                : 'bg-gray-200 text-gray-500'
+            }`}
+          >
+            Company
+          </button>
         </div>
-        <button
+
+        {/* Form */}
+        <div className="bg-white shadow-lg rounded-xl p-6 max-w-lg mx-auto">
+          <form onSubmit={handleSubmit} className="space-y-4">
+            {/* Full Name */}
+            <div>
+              <label className="block text-[#003359]">Full Name</label>
+              <input
+                type="text"
+                name="fullName"
+                value={formValues.fullName}
+                onChange={handleInputChange}
+                placeholder="Enter your name"
+                className="w-full px-4 py-1 border border-[#003359] rounded-md focus:outline-none focus:ring-2 focus:ring-[#003359]"
+              />
+              {formErrors.fullName && (
+                <p className="text-red-500 text-sm">{formErrors.fullName}</p>
+              )}
+            </div>
+
+            {/* Conditional Company Name */}
+            {activeTab === 'company' && (
+              <div>
+                <label className="block text-[#003359]">Company Name</label>
+                <input
+                  type="text"
+                  name="companyName"
+                  value={formValues.companyName}
+                  onChange={handleInputChange}
+                  placeholder="Enter company name"
+                  className="w-full px-4 py-1 border border-[#003359] rounded-md focus:outline-none focus:ring-2 focus:ring-[#003359]"
+                />
+                {formErrors.companyName && (
+                  <p className="text-red-500 text-sm">{formErrors.companyName}</p>
+                )}
+              </div>
+            )}
+
+            {/* Phone Number */}
+            <div>
+              <label className="block text-[#003359]">Phone Number</label>
+              <PhoneNumberInput
+                value={phoneNumber}
+                onChange={(value) => {
+                  setPhoneNumber(value);
+                  setFormErrors((prev) => ({ ...prev, phoneNumber: null }));
+                }}
+              />
+              {formErrors.phoneNumber && (
+                <p className="text-red-500 text-sm">{formErrors.phoneNumber}</p>
+              )}
+            </div>
+
+            {/* Email */}
+            <div>
+              <label className="block text-[#003359] ">Email</label>
+              <input
+                type="email"
+                name="email"
+                value={formValues.email}
+                onChange={handleInputChange}
+                placeholder="Enter your email"
+                className="w-full px-4 py-1 border border-[#003359] rounded-md focus:outline-none focus:ring-2 focus:ring-[#003359]"
+              />
+              {formErrors.email && (
+                <p className="text-red-500 text-sm">{formErrors.email}</p>
+              )}
+            </div>
+
+            {/* House Type */}
+            <div className="flex space-x-2">
+              <div className="w-full">
+                <label className="block text-[#003359] ">House Type</label>
+                <select
+                  name="houseType"
+                  value={formValues.houseType}
+                  onChange={handleInputChange}
+                  className="w-full border border-[#003359] rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#003359]"
+                >
+                  <option value="">Select </option>
+                  <option>Apartment</option>
+                  <option>Villa</option>
+                </select>
+                {formErrors.houseType && (
+                  <p className="text-red-500 text-sm">{formErrors.houseType}</p>
+                )}
+              </div>
+              <div className="w-full">
+                <label className="block text-[#003359]  ">Bedroom Type</label>
+                <select
+                  name="bedroomType"
+                  value={formValues.bedroomType}
+                  onChange={handleInputChange}
+                  className="w-full border border-[#003359] rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#003359]"
+                >
+                  <option value="">Select </option>
+                  <option>1 Bedroom</option>
+                  <option>2 Bedrooms</option>
+                  <option>3 Bedrooms</option>
+                  <option>4 Bedrooms</option>
+                </select>
+                {formErrors.bedroomType && (
+                  <p className="text-red-500 text-sm">{formErrors.bedroomType}</p>
+                )}
+              </div>
+            </div>
+        <div className="text-center mt-4 ">
+         <button
           type="submit"
-          className="w-full py-2 text-white rounded-md"
+          className="inline-block sm:w-auto py-2 px-6 text-white rounded-md transition-transform duration-300 transform hover:scale-105 overflow-hidden"
           style={{
             backgroundImage: 'linear-gradient(90deg, #003359 0%, #00BDFF 100%)',
           }}
+          onMouseDown={(e) => e.target.classList.add('scale-95')}
+          onMouseUp={(e) => e.target.classList.remove('scale-95')}
         >
           Submit
-        </button>
-      </form>
-    </div>
+          </button>
+        </div>
+          </form>
+        </div>
+      </div>
+    </section>
   );
 }

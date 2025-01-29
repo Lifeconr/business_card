@@ -24,11 +24,11 @@ export default function HouseListings() {
   return (
     <div>
       {/* Banner */}
-      <div className="bg-gradient-to-r from-[#003359] to-[#00bdff] text-white text-center py-4 w-full max-w-screen-sm mx-auto">
+      <div className="bg-gradient-to-r from-[#003359] to-[#00bdff] text-white text-center py-3 w-full max-w-screen-sm mx-auto">
         <h1 className="text-2xl font-bold">HillSide Apartments</h1>
       </div>
 
-      <p className="text-center text-[#003359] text-2xl font-thin mt-4 italic bg-white">
+      <p className="text-center text-[#003359] text-2xl font-thin mt-4 font-cursive bg-white">
         በ 400,000ሺ ብር ብቻ ፈጥነው የቤት ባለቤት ይሁኑ! <br />
       </p>
 
