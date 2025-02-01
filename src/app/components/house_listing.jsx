@@ -13,10 +13,10 @@ export default function HouseListings() {
   const [selectedListing, setSelectedListing] = useState(null);
 
   const listings = [
-    { name: "Studio", image: h1, link: "https://dmcreal-estate.com/am/studio-2/", description: "Kare Meter = 55.5 sqm" },
-    { name: "One Bedroom", image: bd1, link: "https://dmcreal-estate.com/am/one-bedroom/", description: "Kare Meter = 76.2 sqm" },
-    { name: "Two Bedroom", image: bd3, link: "https://dmcreal-estate.com/am/two-bedroom-c1/", description: "Kare Meter = 144.6 sqm" },
-    { name: "Three Bedroom", image: bd2, link: "https://dmcreal-estate.com/am/three-bedroom/", description: "Kare Meter = 200 sqm" },
+    { name: "Studio", image: h1, link: "https://dmcreal-estate.com/am/studio-2/", description: "Area = 55.5 sqm" },
+    { name: "One Bedroom", image: bd1, link: "https://dmcreal-estate.com/am/one-bedroom/", description: "Area = 76.2 sqm" },
+    { name: "Two Bedroom", image: bd3, link: "https://dmcreal-estate.com/am/two-bedroom-c1/", description: "Area = 144.6 sqm" },
+    { name: "Three Bedroom", image: bd2, link: "https://dmcreal-estate.com/am/three-bedroom/", description: "Area = 200 sqm" },
     { name: "Four Bedroom", image: h3, comingSoon: true, description: "Details Coming Soon!" },
     { name: "Shop", image: h4, comingSoon: true, description: "Details Coming Soon!" },
   ];
@@ -24,13 +24,9 @@ export default function HouseListings() {
   return (
     <div>
       {/* Banner */}
-      <div className="bg-gradient-to-r from-[#003359] to-[#00bdff] text-white text-center py-3 w-full max-w-screen-sm mx-auto">
+      <div className="bg-gradient-to-r from-[#003359] to-[#00bdff] text-white text-center py-3 w-full max-w-screen-sm mx-auto ">
         <h1 className="text-2xl font-bold">HillSide Apartments</h1>
       </div>
-
-      <p className="text-center text-[#003359] text-2xl font-thin mt-4 font-cursive bg-white">
-        በ 400,000ሺ ብር ብቻ ፈጥነው የቤት ባለቤት ይሁኑ! <br />
-      </p>
 
       {/* Listings */}
       <div className="w-full max-w-screen-sm mx-auto rounded-lg shadow-lg p-4 grid grid-cols-1 sm:grid-cols-2 gap-4 bg-white">
@@ -77,6 +73,11 @@ export default function HouseListings() {
           </div>
         ))}
       </div>
+      
+      <p className="text-center text-[#003359] text-2xl font-semibold mb-4 bg-white">
+        በ 400,000ሺ ብር ብቻ ፈጥነው የቤት ባለቤት ይሁኑ! <br />
+      </p>
+
     </div>
   );
 }

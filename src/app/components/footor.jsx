@@ -14,21 +14,21 @@ export default function Footer() {
   };
 
   return (
-    <footer className="w-full max-w-screen-sm pt-6  pr-8 bg-[#102c52] text-white  shadow-lg mx-auto flex justify-between items-center relative">
+    <footer className="w-full max-w-screen-sm pt-6 pr-8 bg-[#102c52] text-white  shadow-lg mx-auto flex justify-between items-center relative">
       {/* Left Section: Logo and Social Icons */}
-      <div className="flex flex-col items-center w-1/2">
+      <div className="flex flex-col items-center w-3/4">
         {/* Logo */}
         <Image
           src={dmc_logo}
           alt="Company Logo"
-          className="w-24 h-20 sm:w-24 sm:h-20 mb-12"
+          className="w-28 h-20 sm:w-40 sm:h-24 mb-12"
         />
       </div>
 
       {/* Right Section: Buttons */}
-      <div className="flex flex-col gap-2 w-1/2">
+      <div className="flex flex-col pl-8 gap-2  w-1/2">
       <button
-        className="flex items-center justify-center w-full py-2 text-white rounded-md"
+        className="flex items-center justify-center w-36 py-2 text-white rounded-md"
         style={{
           backgroundImage: 'linear-gradient(90deg, #003359 0%, #00BDFF 100%)',
         }}
@@ -38,17 +38,17 @@ export default function Footer() {
         Share
       </button>
       <button
-        className="flex items-center justify-center w-full py-2 text-white rounded-md"
+        className="flex items-center justify-center w-36 py-2 text-white rounded-md"
         style={{
           backgroundImage: 'linear-gradient(90deg, #003359 0%, #00BDFF 100%)',
         }}
         onClick={() => alert('Add to contact functionality here!')}
       >
-        <FaUserPlus className="mr-2" />
+        <FaUserPlus className=" mr-2" />
         Add to Contact
       </button>
        {/* Social Icons */}
-        <div className="flex gap-2 text-2xl pt-2 pb-8">
+        <div className="flex gap-2 text-2xl pt-2 pb-12">
           <a
             href={links.facebook}
             className="p-1 hover:text-[#00BDFF]  transition duration-300"
@@ -56,13 +56,13 @@ export default function Footer() {
           >
             <FaFacebook />
           </a>
-          <a
+          {/* <a
             href={links.linkedin}
             className="p-1 hover:text-[#00BDFF] transition duration-300"
             aria-label="LinkedIn"
           >
             <FaLinkedin />
-          </a>
+          </a> */}
           <a
             href={links.telegram}     
             className="p-1 hover:text-[#00BDFF] transition duration-300"
@@ -86,14 +86,13 @@ export default function Footer() {
           </a>
         </div>
               {/* Footer Bottom: Copyright */}
-      <div className="absolute bottom-1 left-0 w-full text-center">
-        <p className="text-sm text-gray-400 ">
-          &copy; {new Date().getFullYear()} All rights reserved.
+      <div className="absolute bottom-1 pt-4 left-0 w-full text-center">
+        <p className="text-sm text-white ">
+          Powered by <a href='https://seedgit.com/qrur/' className='hover:text-[#00BDFF] text-' > S.E.E.D </a>
         </p>
       </div>
+
       </div>
-
-
     </footer>
   );
 }

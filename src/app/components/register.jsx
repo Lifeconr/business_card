@@ -1,4 +1,4 @@
-'use client';
+'use client'; 
 
 import PhoneNumberInput from './PhoneNumberInput';
 import { useState } from 'react';
@@ -69,21 +69,17 @@ export default function Register() {
     setFormErrors((prev) => ({ ...prev, [name]: null }));
   };
 
-  const isHouseTypeSelected = Boolean(formValues.houseType && formValues.bedroomType);
-
   return (
-    <section id="register" className="bg-primary-light">
+    <section id="register">
       <div className="container mx-auto px-6 md:max-w-2xl lg:max-w-4xl xl:max-w-5xl">
-        <h1 className="text-center text-2xl font-bold text-primary-dark my-2">Register</h1>
+        <h1 className="text-center text-2xl font-bold text-black my-2">Register</h1>
 
         {/* Tabs */}
         <div className="flex justify-center">
           <button
             onClick={() => setActiveTab('personal')}
             className={`px-8 py-2 rounded-t-lg font-medium ${
-              activeTab === 'personal'
-                ? 'bg-[#003359] text-white'
-                : 'bg-gray-200 text-gray-500'
+              activeTab === 'personal' ? 'bg-[#003359] text-white' : 'bg-gray-200 text-gray-500'
             }`}
           >
             Personal
@@ -91,9 +87,7 @@ export default function Register() {
           <button
             onClick={() => setActiveTab('company')}
             className={`px-8 py-2 rounded-t-lg font-medium ${
-              activeTab === 'company'
-                ? 'bg-[#003359] text-white'
-                : 'bg-gray-200 text-gray-500'
+              activeTab === 'company' ? 'bg-[#003359] text-white' : 'bg-gray-200 text-gray-500'
             }`}
           >
             Company
@@ -112,11 +106,10 @@ export default function Register() {
                 value={formValues.fullName}
                 onChange={handleInputChange}
                 placeholder="Enter your name"
-                className="w-full px-4 py-1 border border-[#003359] rounded-md focus:outline-none focus:ring-2 focus:ring-[#003359]"
+                autoComplete="name"
+                className="w-full px-4 py-1 border border-[#003359] rounded-md focus:outline-none focus:ring-2 focus:ring-[#003359] text-black"
               />
-              {formErrors.fullName && (
-                <p className="text-red-500 text-sm">{formErrors.fullName}</p>
-              )}
+              {formErrors.fullName && <p className="text-red-500 text-sm">{formErrors.fullName}</p>}
             </div>
 
             {/* Conditional Company Name */}
@@ -129,11 +122,9 @@ export default function Register() {
                   value={formValues.companyName}
                   onChange={handleInputChange}
                   placeholder="Enter company name"
-                  className="w-full px-4 py-1 border border-[#003359] rounded-md focus:outline-none focus:ring-2 focus:ring-[#003359]"
+                  className="w-full px-4 py-1 border border-[#003359] rounded-md focus:outline-none focus:ring-2 focus:ring-[#003359] text-black"
                 />
-                {formErrors.companyName && (
-                  <p className="text-red-500 text-sm">{formErrors.companyName}</p>
-                )}
+                {formErrors.companyName && <p className="text-red-500 text-sm">{formErrors.companyName}</p>}
               </div>
             )}
 
@@ -147,77 +138,63 @@ export default function Register() {
                   setFormErrors((prev) => ({ ...prev, phoneNumber: null }));
                 }}
               />
-              {formErrors.phoneNumber && (
-                <p className="text-red-500 text-sm">{formErrors.phoneNumber}</p>
-              )}
+              {formErrors.phoneNumber && <p className="text-red-500 text-sm">{formErrors.phoneNumber}</p>}
             </div>
 
             {/* Email */}
             <div>
-              <label className="block text-[#003359] ">Email</label>
+              <label className="block text-[#003359]">Email</label>
               <input
                 type="email"
                 name="email"
                 value={formValues.email}
                 onChange={handleInputChange}
                 placeholder="Enter your email"
-                className="w-full px-4 py-1 border border-[#003359] rounded-md focus:outline-none focus:ring-2 focus:ring-[#003359]"
+                autoComplete="email"
+                className="w-full px-4 py-1 border border-[#003359] rounded-md focus:outline-none focus:ring-2 focus:ring-[#003359] text-black"
               />
-              {formErrors.email && (
-                <p className="text-red-500 text-sm">{formErrors.email}</p>
-              )}
+              {formErrors.email && <p className="text-red-500 text-sm">{formErrors.email}</p>}
             </div>
 
-            {/* House Type */}
-            <div className="flex space-x-2">
+            {/* House Type & Bedroom Type - Responsive Layout */}
+            <div className="flex flex-col sm:flex-row sm:space-x-2 space-y-2 sm:space-y-0">
               <div className="w-full">
-                <label className="block text-[#003359] ">House Type</label>
+                <label className="block text-[#003359]">House Type</label>
                 <select
                   name="houseType"
                   value={formValues.houseType}
                   onChange={handleInputChange}
-                  className="w-full border border-[#003359] rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#003359]"
+                  className="w-full border border-[#003359] rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#003359] text-black"
                 >
-                  <option value="">Select </option>
+                  <option value="">Select</option>
                   <option>Apartment</option>
                   <option>Villa</option>
                 </select>
-                {formErrors.houseType && (
-                  <p className="text-red-500 text-sm">{formErrors.houseType}</p>
-                )}
+                {formErrors.houseType && <p className="text-red-500 text-sm">{formErrors.houseType}</p>}
               </div>
               <div className="w-full">
-                <label className="block text-[#003359]  ">Bedroom Type</label>
+                <label className="block text-[#003359]">Bedroom Type</label>
                 <select
                   name="bedroomType"
                   value={formValues.bedroomType}
                   onChange={handleInputChange}
-                  className="w-full border border-[#003359] rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#003359]"
+                  className="w-full border border-[#003359] rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#003359] text-black"
                 >
-                  <option value="">Select </option>
+                  <option value="">Select</option>
                   <option>1 Bedroom</option>
                   <option>2 Bedrooms</option>
                   <option>3 Bedrooms</option>
                   <option>4 Bedrooms</option>
                 </select>
-                {formErrors.bedroomType && (
-                  <p className="text-red-500 text-sm">{formErrors.bedroomType}</p>
-                )}
+                {formErrors.bedroomType && <p className="text-red-500 text-sm">{formErrors.bedroomType}</p>}
               </div>
             </div>
-        <div className="text-center mt-4 ">
-         <button
-          type="submit"
-          className="inline-block sm:w-auto py-2 px-6 text-white rounded-md transition-transform duration-300 transform hover:scale-105 overflow-hidden"
-          style={{
-            backgroundImage: 'linear-gradient(90deg, #003359 0%, #00BDFF 100%)',
-          }}
-          onMouseDown={(e) => e.target.classList.add('scale-95')}
-          onMouseUp={(e) => e.target.classList.remove('scale-95')}
-        >
-          Submit
-          </button>
-        </div>
+
+            <div className="text-center mt-4">
+              <button type="submit" className="py-2 px-6 text-white rounded-md bg-gradient-to-r from-[#003359] to-[#00BDFF] transform hover:scale-105 transition-transform">
+                Submit
+              </button>
+            </div>
           </form>
         </div>
       </div>

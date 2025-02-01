@@ -30,13 +30,13 @@ const PhoneNumberInput = ({ value, onChange, isHouseTypeSelected }) => {
         }}
         enableSearch
         placeholder="Choose country code"
-        inputClass="!w-full border !border-[#003359]  rounded-md focus:outline-none focus:ring-2 focus:ring-[#003359]"
+        inputClass="!w-full border !border-[#003359] rounded-md focus:outline-none focus:ring-2 focus:ring-[#003359] !text-black" // Added text-black
         buttonClass="!bg-transparent border-none focus:ring-0"
         dropdownClass="custom-dropdown"
-        containerClass="!w-full !lg:w-72"
+        containerClass="!w-full !lg:w-72 !text-black"
       />
       {countryData.name && (
-        <p className="text-sm text-gray-500 mt-1">
+        <p className="text-sm text-black mt-1">
           Selected Country: {countryData.name} (+{countryData.dialCode})
         </p>
       )}

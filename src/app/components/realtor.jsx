@@ -53,35 +53,34 @@ export default function RealtorSection() {
       <h2 className="text-2xl font-bold text-center text-[#003359] mb-">{realtor.name}</h2>
       <p className="text-center text-xl font-bold text-[#003359]">{realtor.position}</p>
 
-      {/* Contact Info */}
-      <div className="mt-4 mb-8">
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 ">
-          {/* Phone */}
-          <div
-            className="flex items-center bg-gray-200 text-[#003359]  px-4 py-2 rounded-md cursor-pointer hover:bg-gray-300"
-            onClick={() => copyToClipboard(realtor.phone)}
-          >
-            <FaPhoneAlt className="text-2xl mr-4" />
-            <div >
-              <span className="text-sm text-[#00BDFF]">Phone Number</span>
-              <p className="font-semibold">{realtor.phone}</p>
-            </div>
-          </div>
-
-          {/* Email */}
-          <div
-            className="flex items-center bg-gray-200 text-[#003359] px-4 py-2 rounded-md cursor-pointer hover:bg-gray-300"
-            onClick={() => copyToClipboard(realtor.email)}
-          >
-            <FaEnvelope className="text-2xl mr-4" />
-            <div>
-
-              <span className="text-sm text-[#00BDFF]">Email</span>
-              <p className="font-semibold">{realtor.email}</p>
-            </div>
-          </div>
-        </div>
+{/* Contact Info */}
+<div className="mt-4 mb-6">
+  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 ">
+    {/* Phone */}
+    <div
+      className="flex items-center bg-gray-200 text-[#003359] px-4 py-2 rounded-md cursor-pointer hover:bg-gray-300"
+      onClick={() => window.location.href = `tel:${realtor.phone}`} // Direct to phone
+    >
+      <FaPhoneAlt className="text-2xl mr-4" />
+      <div>
+        <span className="text-sm text-[#00BDFF]">Phone Number</span>
+        <p className="font-semibold">{realtor.phone}</p>
       </div>
+    </div>
+
+    {/* Email */}
+    <div
+      className="flex items-center bg-gray-200 text-[#003359] px-4 py-2 rounded-md cursor-pointer hover:bg-gray-300"
+      onClick={() => window.location.href = `mailto:${realtor.email}`} // Direct to email
+    >
+      <FaEnvelope className="text-2xl mr-4" />
+      <div>
+        <span className="text-sm text-[#00BDFF]">Email</span>
+        <p className="font-semibold">{realtor.email}</p>
+      </div>
+    </div>
+  </div>
+</div>
 
       {/* Social Links */}
       <div className="flex justify-center items-center gap-4 mt-4">

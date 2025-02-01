@@ -42,15 +42,15 @@ export default function AppointmentPage() {
   };
 
   return (
-    <section id="appointment" className=" bg-primary-light">
+    <section id="appointment" className="bg-white">
       <div className="container mx-auto px-6 md:max-w-2xl lg:max-w-4xl xl:max-w-6xl">
-        <h2 className="text-center text-2xl font-bold text-primary-dark mb- bg-white">
+        <h2 className="text-center text-2xl font-bold bg-white text-black rounded-lg">
           Book Your Appointment
         </h2>
         <div className="bg-white shadow-lg rounded-xl p-8 max-w-lg mx-auto">
-          <div className="mb-">
-            <label htmlFor="date" className="block text-base font-medium text-[#003359] mb-2">
-              Select Date:
+          <div className="mb-4 flex flex-col sm:flex-row sm:items-center">
+          <label htmlFor="date" className="text-base font-medium text-[#003359] sm:mt-0 sm:ml-4">
+              Select Date
             </label>
             <input
               type="date"
@@ -61,42 +61,44 @@ export default function AppointmentPage() {
                 setErrorMessage((prev) => ({ ...prev, date: "" }));
                 setSelectedHour("");
               }}
-              className="w-full border border-[#003359] rounded-lg px-4 py-2 focus:ring-2  focus:ring-[#003359] focus:outline-none"
+              className="w-full border border-[#003359] rounded-lg px-4 py-2 focus:ring-2 focus:ring-[#003359] focus:outline-none text-black"
             />
-            {errorMessage.date && <p className="text-red-600 text-sm mt-1">{errorMessage.date}</p>}
+
           </div>
-          <div className="mb-6">
-            <label htmlFor="hour" className="block pt-2 text-base font-medium text-[#003359]">
-              Select Time Slot:
+          {errorMessage.date && <p className="text-red-600 text-sm mt-1">{errorMessage.date}</p>}
+          <label htmlFor="hour" className="text-base font-medium text-[#003359] sm:mt-0 sm:ml-4">
+              Select Time Slot
             </label>
+          <div className="mb-6 flex flex-col sm:flex-row sm:items-center">
             <select
               id="hour"
               value={selectedHour}
               onChange={(e) => setSelectedHour(e.target.value)}
-              className="w-full border border-[#003359] rounded-lg px-4 py-2 focus:ring-2 focus:ring-[#003359] focus:outline-none"
+              className="w-full border border-[#003359] rounded-lg px-4 py-2 focus:ring-2 focus:ring-[#003359] focus:outline-none text-black"
             >
               <option value="">-- Select an hour --</option>
               {availableHours.map((hour, index) => (
                 <option key={index} value={hour}>{hour}</option>
               ))}
             </select>
-            {errorMessage.hour && <p className="text-red-600 text-sm mt-1">{errorMessage.hour}</p>}
+
           </div>
+          {errorMessage.hour && <p className="text-red-600 text-sm mt-1">{errorMessage.hour}</p>}
+
           {confirmationMessage && <p className="text-green-600 text-base font-medium mb-4">{confirmationMessage}</p>}
-        <div className="text-center mt-4 ">
-         <button
-          type="submit"
-          onClick={handleMakeAppointment}
-          className="inline-block sm:w-auto py-2 px-4 text-white rounded-md transition-transform duration-300 transform hover:scale-105 overflow-hidden"
-          style={{
-            backgroundImage: 'linear-gradient(90deg, #003359 0%, #00BDFF 100%)',
-          }}
-          onMouseDown={(e) => e.target.classList.add('scale-95')}
-          onMouseUp={(e) => e.target.classList.remove('scale-95')}
-        >
-          Make Appointment
-          </button>
-        </div>
+          
+          <div className="text-center mt-4">
+            <button
+              type="submit"
+              onClick={handleMakeAppointment}
+              className="inline-block sm:w-auto py-2 px-4 text-white rounded-md transition-transform duration-300 transform hover:scale-105 overflow-hidden"
+              style={{ backgroundImage: 'linear-gradient(90deg, #003359 0%, #00BDFF 100%)' }}
+              onMouseDown={(e) => e.target.classList.add('scale-95')}
+              onMouseUp={(e) => e.target.classList.remove('scale-95')}
+            >
+              Make Appointment
+            </button>
+          </div>
         </div>
       </div>
     </section>
