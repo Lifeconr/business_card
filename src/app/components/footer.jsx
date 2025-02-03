@@ -21,8 +21,11 @@ export default function Footer() {
         <Image
           src={dmc_logo}
           alt="Company Logo"
-          className="w-28 h-20 sm:w-40 sm:h-24 mb-12"
+          className="w-28 h-20 sm:w-40 sm:h-24 "
         />
+              <p className="text-center text-white text-l font-thin font-cursive mb-20">
+                  Joy Starts Here <br />
+            </p>      
       </div>
 
       {/* Right Section: Buttons */}

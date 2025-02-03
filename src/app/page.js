@@ -4,7 +4,7 @@ import RealtorSection from "./components/realtor";
 import HouseListings from "./components/house_listing";
 import RegisterSection from "./components/register";
 import AppointmentPage from "./components/appointment";
-import Footer from "./components/footor";
+import Footer from "./components/footer";
 
 export default function Home() {
   return (

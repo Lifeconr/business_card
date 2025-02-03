@@ -73,8 +73,8 @@ export default function RealtorSection() {
       className="flex items-center bg-gray-200 text-[#003359] px-4 py-2 rounded-md cursor-pointer hover:bg-gray-300"
       onClick={() => window.location.href = `mailto:${realtor.email}`} // Direct to email
     >
-      <FaEnvelope className="text-2xl mr-4" />
-      <div>
+      <FaEnvelope className="text-2xl mr-2" />
+      <div >
         <span className="text-sm text-[#00BDFF]">Email</span>
         <p className="font-semibold">{realtor.email}</p>
       </div>

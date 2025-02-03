@@ -1,3 +1,4 @@
+'use client';
 import Image from 'next/image';
 import dmc_logo from '../../../public/images/dmc_logo.jpg';
 import ImageSlider from './slider.jsx';
