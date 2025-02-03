@@ -44,7 +44,7 @@ export default function AppointmentPage() {
   return (
     <section id="appointment" className="bg-white">
       <div className="container mx-auto px-6 md:max-w-2xl lg:max-w-4xl xl:max-w-6xl">
-        <h2 className="text-center text-2xl px-2 font-bold bg-white text-black rounded-lg">
+        <h2 className="text-center text-xl sm:text-2xl px-2 font-bold bg-white text-black rounded-lg">
           Book Your Appointment
         </h2>
         <div className="bg-white shadow-lg rounded-xl p-8 max-w-lg mx-auto">
@@ -52,34 +52,17 @@ export default function AppointmentPage() {
               Select Date
         </label>
           <div className="mb-4 flex flex-col sm:flex-row sm:items-center">
-           <input
-  type="date"
-  id="date"
-  value={selectedDate}
-  onChange={(e) => {
-    setSelectedDate(e.target.value);
-    setErrorMessage((prev) => ({ ...prev, date: "" }));
-    setSelectedHour("");
-  }}
-  onFocus={(e) => {
-    if (e.target.type === "text") {
-      e.target.type = "date"; // Switch back to date input
-    } else if (e.target.showPicker) {
-      e.target.showPicker(); // Opens native picker on mobile
-    }
-  }}
-  className="w-full border border-[#003359] rounded-lg px-4 py-2 focus:ring-2 focus:ring-[#003359] focus:outline-none text-black"
-  style={{
-    color: selectedDate ? "black" : "#9CA3AF", // Gray color for placeholder effect
-  }}
-  onBlur={(e) => {
-    if (!e.target.value) {
-      e.target.type = "text"; // Show the placeholder effect
-      e.target.value = "";
-    }
-  }}
-/>
-
+            <input
+              type="date"
+              id="date"
+              value={selectedDate}
+              onChange={(e) => {
+                setSelectedDate(e.target.value);
+                setErrorMessage((prev) => ({ ...prev, date: "" }));
+                setSelectedHour("");
+              }}
+              className="w-full border border-[#003359] rounded-lg px-4 py-2 focus:ring-2 focus:ring-[#003359] focus:outline-none text-black"
+            />
           </div>
           {errorMessage.date && <p className="text-red-600 text-sm mt-1">{errorMessage.date}</p>}
           <label htmlFor="hour" className="text-base font-medium text-[#003359] sm:mt-0 sm:ml-4">
