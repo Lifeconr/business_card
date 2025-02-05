@@ -35,21 +35,59 @@ export default function Footer() {
         style={{
           backgroundImage: 'linear-gradient(90deg, #003359 0%, #00BDFF 100%)',
         }}
-        onClick={() => alert('Share functionality here!')}
+        onClick={async () => {
+          if (navigator.share) {
+            try {
+              await navigator.share({
+                title: 'Check this out!',
+                text: 'Here is something interesting for you!',
+                url: 'https://business-card-sandy.vercel.app/ ', 
+              });
+            } catch (error) {
+              console.error('Error sharing:', error);
+            }
+          } else {
+            alert('Sharing is not supported in this browser.');
+          }
+        }}
       >
         <FaShareAlt className="mr-2" />
         Share
       </button>
+
       <button
         className="flex items-center justify-center w-36 py-2 text-white rounded-md"
         style={{
           backgroundImage: 'linear-gradient(90deg, #003359 0%, #00BDFF 100%)',
         }}
-        onClick={() => alert('Add to contact functionality here!')}
+        onClick={() => {
+          const vCardData = `
+            BEGIN:VCARD
+            VERSION:3.0
+            FN:Kidst Mengistu
+            TEL:+251 91 220 9322
+            EMAIL:Kidstmengstu19@gmail.com
+            ORG:DMC Real Estate 
+            WORK INFo:Realtor
+            END:VCARD
+                `;
+
+          const blob = new Blob([vCardData], { type: "text/vcard" });
+          const url = URL.createObjectURL(blob);
+
+          const a = document.createElement("a");
+          a.href = url;
+          a.download = "realtor_contact.vcf";
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          URL.revokeObjectURL(url);
+        }}
       >
-        <FaUserPlus className=" mr-2" />
+        <FaUserPlus className="mr-2" />
         Add to Contact
       </button>
+
        {/* Social Icons */}
         <div className="flex gap-2 text-2xl pt-2 pb-12">
           <a
