@@ -61,16 +61,7 @@ export default function Footer() {
           backgroundImage: 'linear-gradient(90deg, #003359 0%, #00BDFF 100%)',
         }}
         onClick={() => {
-          const vCardData = `
-            BEGIN:VCARD
-            VERSION:3.0
-            FN:Kidst Mengistu
-            TEL:+251 91 220 9322
-            EMAIL:Kidstmengstu19@gmail.com
-            ORG:DMC Real Estate 
-            WORK INFO:Realtor
-            END:VCARD
-                `;
+          const vCardData = `BEGIN:VCARD\r\nVERSION:3.0\r\nFN:Kidst Mengistu\r\nTEL:+251912209322\r\nEMAIL:Kidstmengstu19@gmail.com\r\nORG:DMC Real Estate\r\nTITLE:Realtor\r\nEND:VCARD\r\n`;
 
           const blob = new Blob([vCardData], { type: "text/vcard" });
           const url = URL.createObjectURL(blob);
@@ -87,6 +78,7 @@ export default function Footer() {
         <FaUserPlus className="mr-2" />
         Add to Contact
       </button>
+
 
        {/* Social Icons */}
         <div className="flex gap-2 text-2xl pt-2 pb-12">
