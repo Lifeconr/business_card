@@ -68,7 +68,7 @@ export default function Footer() {
             TEL:+251 91 220 9322
             EMAIL:Kidstmengstu19@gmail.com
             ORG:DMC Real Estate 
-            WORK INFo:Realtor
+            WORK INFO:Realtor
             END:VCARD
                 `;
 
