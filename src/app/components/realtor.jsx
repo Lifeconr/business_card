@@ -37,12 +37,6 @@ export default function RealtorSection() {
 
   return (
     <div className="w-full max-w-screen-sm p-8 rounded-lg shadow-lg mx-auto text-white bg-white">
-      {/* Slogan
-      <p className="text-center text-[#003359] text-3xl font-thin mt-4 mb-12 italic ">
-        Joy Starts Here <br />
-        <span className="text-[#00BDFF]">ደስታዎ እዚህ ይጀምራል!</span>
-      </p>
-             */}
       <Image
         src={realtor.picture}
         alt={realtor.name}
