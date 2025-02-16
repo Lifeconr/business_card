@@ -14,7 +14,7 @@ const roboto = Roboto({
 });
 
 export const metadata = {
-  title: "Kidst Mengistu",
+  title: "Realstate employee Card",
   description: "Realtor at DMC Real Estate",
 };
 
