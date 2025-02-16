@@ -1,0 +1,30 @@
+[
+  {
+    "id": "kidst",
+    "name": "Kidst Mengistu",
+    "position": "Realtor",
+    "phone": "+251 91 111111",
+    "email": "ex@gmail.com",
+    "linkedin": "https://www.linkedin.com/in/kidst-mengistu-300748284",
+    "website": "https://dmcreal-estate.com/",
+    "facebook": "https://www.facebook.com/profile.php?id=61567610923060",
+    "telegram": "https://t.me/Kidiine",
+    "whatsapp": "https://wa.me/c/251912209322",
+    "tiktok": "https://tiktok.com/@kidst19market",
+    "picture": "/images/pp3.jpg"
+  },
+  {
+    "id": "john",
+    "name": "John Doe",
+    "position": "Senior Realtor",
+    "phone": "+251 90 000 0000",
+    "email": "john@example.com",
+    "linkedin": "https://www.linkedin.com/in/john-doe/",
+    "website": "https://example.com/",
+    "facebook": "https://www.facebook.com/john.doe",
+    "telegram": "https://t.me/JohnDoe",
+    "whatsapp": "https://wa.me/c/251900000000",
+    "tiktok": "https://tiktok.com/@johndoe",
+    "picture": "/images/h5.jpg"
+  }
+]
