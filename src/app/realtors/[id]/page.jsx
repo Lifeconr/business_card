@@ -47,7 +47,7 @@ export default function RealtorProfile() {
     fetchRealtor();
   }, [id]);
 
-  // if (loading) return <p className="text-center">Loading...</p>;
+  
   if (error) return <p className="text-center text-red-500">{error}</p>;
   if (!realtor) return <p className="text-center">Realtor not found</p>;
 
