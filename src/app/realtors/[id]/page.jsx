@@ -28,7 +28,7 @@ export default function RealtorProfile() {
     const fetchRealtor = async () => {
       try {
         const res = await fetch(
-          'https://raw.githubusercontent.com/Lifeconr/business_card/dynamic/public/data/realtors.json'
+          'https://raw.githubusercontent.com/Lifeconr/business_card/0bde57b072c00d461c1b7ecb1362b533b28dd6ac/public/data/realtors.json'
         );
         if (!res.ok) {
           throw new Error('Failed to fetch data');
