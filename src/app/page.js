@@ -16,7 +16,7 @@ export default function Home() {
     const fetchRealtors = async () => {
       try {
         const res = await fetch(
-          'https://raw.githubusercontent.com/Lifeconr/business_card/dynamic/public/data/realtors.json'
+          'https://raw.githubusercontent.com/Lifeconr/business_card/refs/heads/main/public/data/realtors.json'
         );
         if (!res.ok) {
           throw new Error('Failed to fetch data');
