@@ -19,7 +19,7 @@ import {
 } from 'react-icons/fa';
 
 export default function RealtorProfile() {
-  const { id } = useParams(); // Get ID from the URL
+  const { id } = useParams();
   const [realtor, setRealtor] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -27,36 +27,47 @@ export default function RealtorProfile() {
   useEffect(() => {
     const fetchRealtor = async () => {
       try {
-        const res = await fetch(
-          'https://raw.githubusercontent.com/Lifeconr/business_card/0bde57b072c00d461c1b7ecb1362b533b28dd6ac/public/data/realtors.json'
-        );
+        setLoading(true);
+        // Option 1: Use a stable endpoint (recommended)
+        const res = await fetch('/api/realtors'); // Move data to API route
+        // Option 2: If using GitHub, use a stable raw URL
+        // const res = await fetch(
+        //   'https://raw.githubusercontent.com/Lifeconr/business_card/0bde57b072c00d461c1b7ecb1362b533b28dd6ac/public/data/realtors.json'
+        // );
         if (!res.ok) {
-          throw new Error('Failed to fetch data');
+          throw new Error(`HTTP error! status: ${res.status}`);
         }
+        
         const data = await res.json();
-        const selectedRealtor = data.find((r) => r.id === id); // Match the string ID
+        const selectedRealtor = data.find((r) => r.id === id);
+        
+        if (!selectedRealtor) {
+          throw new Error('Realtor not found');
+        }
+        
         setRealtor(selectedRealtor);
       } catch (err) {
-        console.error(err);
-        setError('Failed to load data');
+        console.error('Fetch error:', err);
+        setError(err.message || 'Failed to load realtor data');
       } finally {
         setLoading(false);
       }
     };
 
-    fetchRealtor();
+    if (id) {
+      fetchRealtor();
+    }
   }, [id]);
 
-  
-  if (error) return <p className="text-center text-red-500">{error}</p>;
-  if (!realtor) return <p className="text-center">Realtor not found</p>;
-
-   // Function to copy text to clipboard
-   const copyToClipboard = (text) => {
+  const copyToClipboard = (text) => {
     navigator.clipboard.writeText(text).then(() => {
       alert(`${text} copied to clipboard!`);
     });
   };
+
+  if (loading) return <div className="text-center py-8">Loading...</div>;
+  if (error) return <div className="text-center text-red-500 py-8">{error}</div>;
+  if (!realtor) return <div className="text-center py-8">Realtor not found</div>;
 
  return (
   <div>  <Header /> 
