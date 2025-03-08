@@ -15,9 +15,10 @@ export default function Home() {
   useEffect(() => {
     const fetchRealtors = async () => {
       try {
-        const res = await fetch(
-          'https://raw.githubusercontent.com/Lifeconr/business_card/refs/heads/main/public/data/realtors.json'
-        );
+        const res = await fetch('/api/realtors'); 
+        // const res = await fetch(
+        //   'https://raw.githubusercontent.com/Lifeconr/business_card/refs/heads/main/public/data/realtors.json'
+        // );
         if (!res.ok) {
           throw new Error('Failed to fetch data');
         }
@@ -48,13 +49,14 @@ export default function Home() {
               key={realtor.id}
               className="bg-white p-4 rounded-lg shadow-lg hover:shadow-2xl transition-shadow"
             >
-              <Image
-                src={realtor.picture}
-                alt={realtor.name}
-                className="w-32 h-32 rounded-full mx-auto"
-                width={128}
-                height={128}
-              />
+          <Image
+              src={realtor.picture}
+              alt={realtor.name}
+              className="w-36 h-36 rounded-full mx-auto mb-4"
+              width={512}  
+              height={512} 
+              quality={100} 
+            />
               <h3 className="text-xl font-semibold text-center text-[#003359] mt-4">{realtor.name}</h3>
               <p className="text-center text-gray-600">{realtor.position}</p>
               
