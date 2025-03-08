@@ -72,13 +72,14 @@ export default function RealtorProfile() {
  return (
   <div>  <Header /> 
      <div className="w-full max-w-screen-sm p-8 rounded-lg shadow-lg mx-auto text-white bg-white">
-       <Image
-         src={realtor.picture}
-         alt={realtor.name}
-         className="w-36 h-36 rounded-full mx-auto mb-4"
-         width={128}
-         height={128}
-       />
+     <Image
+        src={realtor.picture}
+        alt={realtor.name}
+        className="w-36 h-36 rounded-full mx-auto mb-4"
+        width={512}  
+        height={512} 
+        quality={100} 
+      />
        <h2 className="text-2xl font-bold text-center text-[#003359] mb-">{realtor.name}</h2>
        <p className="text-center text-xl font-bold text-[#003359]">{realtor.position}</p>
  
